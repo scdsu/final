@@ -17,11 +17,16 @@ int main() {
     list<GameObj*> objs;
     int turncount = 0;
 
-    int numa, numb, total;
-    cout << "Input the number of ants you want on Team 1: " << endl;
-    cin >> numa;
-    cout << "Input the number of ants you want on Team 2: " << endl;
-    cin >> numb;
+    int numa=-1, numb=-1, total;
+    do {
+        cout << "Input the number (must be positive) of ants you want on Team 1: " << endl;
+        cin >> numa;
+    } while (numa < 0);
+
+    do {
+        cout << "Input the number of ants you want on Team 2: " << endl;
+        cin >> numb;
+    } while (numa < 0);
     total = numa+numb;
 
     for (int t=0; t < total; t++) {
