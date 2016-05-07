@@ -43,7 +43,7 @@ Vec3D Ant::random_valid_move(Map & world) {
     Vec3D move;
     while (true) {
         move = random_direction();
-        if (is_valid_move(move, world)) {
+        if (is_valid_move(move, world) && world[pos + move].empty()) {
             return move;
         }
     }

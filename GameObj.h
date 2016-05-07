@@ -11,9 +11,9 @@
 //Represents any object that actually exists in the simulation.
 class GameObj{
 private:
-    Vec3D pos;
     bool destroyed;
 protected:
+    Vec3D pos;
     int time;
 public:
     GameObj();
