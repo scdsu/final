@@ -1,0 +1,28 @@
+This project is #20 out of the available final projects; a simulation of ants fighting in three dimensional space. There
+are two teams of ants, red and blue, and ants will destroy each other whenever they are adjacent to each other. Ants
+will not move in to the same space as other ants. Each ant has a “time” value that represents how many more actions it
+can take this iteration of the simulation; moving consumes “time” and once it is 0 the ant cannot take any more actions.
+Time is reset at the beginning of each iteration of the simulation. Ants pick their next move by randomly selecting from
+the set of valid moves. The simulation terminates when one or zero teams remain.
+
+Each agent – each ant – in the simulation is a C++ object, storing the ant’s position, team affiliation, time points
+left, and any other details about the ant. The map is an object backed by a 2-d array of stdlib lists; this maps
+Cartesian coordinates to collections of simulation objects (i.e. ants.) What movements are valid at what positions is
+determined by the transition map, which is a 2-d array of integer values; these values, interpreted with bitmasks,
+represent whether movement in a given direction is possible at that position.
+
+These structures were chosen because they are the simplest and a very efficient way to store the needed information;
+they are slightly memory-inefficient but should not be a problem at expected simulation scales. Lists were chosen to
+represent the objects at a given position instead of vectors because objects will be removed and inserted more often
+than they will be acquired from the list.
+
+The fact that the GameObj and the Map both have ideas on where a GameObj is does create two separate sources of truth,
+but maintaining consistency should be trivial and the speed benefits compared to searching the entire array should be
+worth the increased complexity.
+
+This project will be developed with JetBrains’ CLion professional edition. It will be compiled with MinGW on Windows 10.
+
+To run:
+
+Compile and run. Input two positive numbers; values between 5 and 1000 are recommended. The simulation will then play
+out on its own.
