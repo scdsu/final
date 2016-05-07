@@ -27,9 +27,13 @@ int main() {
     for (int t=0; t < total; t++) {
         Ant * myant;
         myant = new Ant;
-        myant->set_pos(Vec3D(40,20,30),mymap); //This sets the Ant's position AND puts it in the map at the correct spot
-        //myant->set_team(rand() % 2);
-        myant->set_team( t > numa ? 2 : 1 );
+        if (t < numb) { //Ant is on team 1...
+            myant->set_pos(Vec3D(3,50,50),mymap); //This sets the Ant's position AND puts it in the map at the correct spot
+            myant->set_team(1);
+        } else { //Ant is on team 2.
+            myant->set_pos(Vec3D(97,50,50),mymap);
+            myant->set_team(2);
+        }
         ants.push_back(myant);
     }
 
@@ -77,7 +81,14 @@ int main() {
                 lastteam=theant->get_team();
             }
         }
-        if (!sawdifferentteam) { cout << "Team " << lastteam << " wins!" << endl; break;}
+        if (!sawdifferentteam) {
+            if (lastteam == -1) {
+                cout << "Draw!" << endl;
+            } else{
+                cout << "Team " << lastteam << " wins!" << endl;
+            }
+            break;
+        }
     }
 
     return 0;
